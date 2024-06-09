@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)) );
 
     }
-
+// loginUser
     void loginUser(){
         String email  = emailEditText.getText().toString();
         String password  = passwordEditText.getText().toString();
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
                     }else{
-                        Utility.showToast(LoginActivity.this,"Email not verified, Please verify your email.");
+                        Utility.showToast(LoginActivity.this,"Email not verified, please verify your email.");
                     }
 
                 }else{

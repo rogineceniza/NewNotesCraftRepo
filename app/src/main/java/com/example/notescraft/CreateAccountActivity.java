@@ -71,7 +71,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         changeInProgress(false);
                         if(task.isSuccessful()){
                             //creating acc is done
-                            Utility.showToast(CreateAccountActivity.this,"Successfully create account,Check email to verify");
+                            Utility.showToast(CreateAccountActivity.this,"Account successfully created, check email to verify.");
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
@@ -101,15 +101,15 @@ public class CreateAccountActivity extends AppCompatActivity {
         //validate the data that are input by user.
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailEditText.setError("Email is invalid");
+            emailEditText.setError("Email is invalid.");
             return false;
         }
         if(password.length()<6){
-            passwordEditText.setError("Password length is invalid");
+            passwordEditText.setError("Password length is invalid.");
             return false;
         }
         if(!password.equals(confirmPassword)){
-            confirmPasswordEditText.setError("Password not matched");
+            confirmPasswordEditText.setError("Password does not match.");
             return false;
         }
         return true;

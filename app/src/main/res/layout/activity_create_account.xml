@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginVertical="16dp"
     android:layout_marginHorizontal="32dp"
-    android:background="@color/green"
+    android:backgroundTint="@color/white"
     tools:context=".CreateAccountActivity">
     <ImageView
         android:layout_width="128dp"
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello."
+            android:text="Hello!"
             android:textStyle="bold"
             android:textSize="32sp"
             android:textColor="@color/gray"/>
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Let's get started"
+            android:text="Let's get started."
             android:textStyle="bold"
             android:textSize="36sp"
             android:textColor="@color/gray"/>
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/email_edit_text"
             android:inputType="textEmailAddress"
-            android:hint="Email Id"
+            android:hint="Email Address"
             android:textSize="20sp"
             android:background="@drawable/rounded_corner"
             android:padding="16dp"
