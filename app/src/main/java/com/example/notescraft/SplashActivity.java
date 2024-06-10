@@ -11,6 +11,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 
+
+
+
+    //This method configures the SplashActivity by setting its layout and initiating a delay using a Handler.
+    // After the delay, it checks if there's a currently signed-in user.
+    // If not, it navigates to the LoginActivity;
+    // otherwise, it navigates to the MainActivity. Finally, it finishes the SplashActivity.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
+    //declares variables for UI elements
     EditText emailEditText,passwordEditText;
     Button loginBtn;
     ProgressBar progressBar;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //this part refers to the UI element defined in the XML layout
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         loginBtn = findViewById(R.id.login_btn);
@@ -37,13 +39,14 @@ public class LoginActivity extends AppCompatActivity {
 
         loginBtn.setOnClickListener((v)-> loginUser() );
         createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)) );
-
     }
-// loginUser
+
+
+    //retrieves the email and password from the input fields, validates them,
+    // and if valid, attempts to log the user into Firebase.
     void loginUser(){
         String email  = emailEditText.getText().toString();
         String password  = passwordEditText.getText().toString();
-
 
         boolean isValidated = validateData(email,password);
         if(!isValidated){
@@ -51,9 +54,13 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         loginAccountInFirebase(email,password);
-
     }
 
+
+    //attempts to sign in a user with the provided email and password using Firebase,
+    // shows a progress indicator, handles the success or failure of the login attempt,
+    // and checks if the email is verified, redirecting to MainActivity if successful
+    // or showing a relevant message otherwise.
     void loginAccountInFirebase(String email,String password){
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         changeInProgress(true);
@@ -79,6 +86,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //toggles the visibility of a progress bar and a login button based on the progress status.
+    // If progress is ongoing, it shows the progress bar and hides the login button; otherwise,
+    // it hides the progress bar and shows the login button.
     void changeInProgress(boolean inProgress){
         if(inProgress){
             progressBar.setVisibility(View.VISIBLE);
@@ -88,6 +98,12 @@ public class LoginActivity extends AppCompatActivity {
             loginBtn.setVisibility(View.VISIBLE);
         }
     }
+
+
+
+    //checks if the provided email is in a valid format and if the password is at least 6 characters long,
+    //displaying error messages if the data is invalid, and returning false.
+    //If the data is valid, it returns true.
 
     boolean validateData(String email,String password){
         //validate the data that are input by user.

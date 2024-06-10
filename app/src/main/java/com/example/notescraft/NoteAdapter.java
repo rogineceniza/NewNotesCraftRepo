@@ -20,11 +20,19 @@ import androidx.recyclerview.widget.RecyclerView;
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.NoteViewHolder> {
     Context context;
 
+
+    //This constructor initializes a NoteAdapter with FirestoreRecyclerOptions
+    // for configuring Firestore data querying and a Context object for application-specific functionality.
     public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options, Context context) {
         super(options);
         this.context = context;
     }
 
+
+    //This method binds data to a NoteViewHolder, setting the title,
+    // content, and timestamp of a Note object to the corresponding TextViews in the ViewHolder.
+    // Additionally, it sets an OnClickListener on the item view
+    // to launch NoteDetailsActivity with information about the selected note.
     @Override
     protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull Note note) {
         holder.titleTextView.setText(note.title);
@@ -42,6 +50,10 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
 
     }
 
+
+    //This method creates and returns a NoteViewHolder by inflating a layout resource (recycler_note_item.xml)
+    // in order to represent the individual items in the RecyclerView.
+    // It sets up the layout for displaying a note.
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,6 +61,11 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         return new NoteViewHolder(view);
     }
 
+
+
+    //This class represents a ViewHolder for displaying individual note items in a RecyclerView.
+    // It contains TextViews for displaying the title, content, and timestamp of a note,
+    // and it initializes these TextViews by finding their respective views in the inflated layout for a note item.
     class NoteViewHolder extends RecyclerView.ViewHolder{
         TextView titleTextView,contentTextView,timestampTextView;
 

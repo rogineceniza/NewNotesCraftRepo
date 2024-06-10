@@ -13,16 +13,22 @@ import java.text.SimpleDateFormat;
 
 public class Utility {
 
+
+
+    //Displays a short-duration toast message with the provided message text.
     static void showToast(Context context,String message){
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
 
+
+    //Retrieves the Firestore collection reference for the notes belonging to the current user.
     static CollectionReference getCollectionReferenceForNotes(){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         return FirebaseFirestore.getInstance().collection("notes")
                 .document(currentUser.getUid()).collection("my_notes");
     }
 
+    //Converts a Firestore Timestamp object to a formatted string representation (MM/dd/yyyy).
     static String timestampToString(Timestamp timestamp){
         return new SimpleDateFormat("MM/dd/yyyy").format(timestamp.toDate());
     }

@@ -16,6 +16,8 @@ import com.google.firebase.firestore.DocumentReference;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
+
+    //declares variables for UI elements
     EditText titleEditText,contentEditText;
     ImageButton saveNoteBtn;
     TextView pageTitleTextView;
@@ -23,6 +25,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
     boolean isEditMode = false;
     TextView deleteNoteTextViewBtn;
 
+
+    //This method initializes the NoteDetailsActivity layout and views,
+    // retrieves data passed from the previous activity, sets up the UI with the received data,
+    // enables editing mode if necessary, and sets click listeners for saving and deleting notes.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,9 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     }
 
+    //This method retrieves the title and content of a note from EditText fields,
+    // validates the title, creates a new Note object with the retrieved data and the current timestamp,
+    // and saves the note to Firebase.
     void saveNote(){
         String noteTitle = titleEditText.getText().toString();
         String noteContent = contentEditText.getText().toString();
@@ -72,6 +81,9 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     }
 
+
+    //This method saves a Note object to Firebase Firestore.
+    // If it's in edit mode, it updates the existing note; otherwise, it creates a new note.
     void saveNoteToFirebase(Note note){
         DocumentReference documentReference;
         if(isEditMode){
@@ -84,6 +96,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
 
 
+        //This code sets the provided Note object to a Firestore document reference
+        // and adds a completion listener to handle the success or failure of the operation.
+        // If successful, it shows a success message and finishes the activity;
+        // otherwise, it shows an error message.
         documentReference.set(note).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -99,6 +115,11 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     }
 
+
+    //This method deletes a note from Firebase Firestore using the provided document ID.
+    // It adds a completion listener to handle the success or failure of the operation.
+    // If successful, it shows a success message and finishes the activity;
+    // otherwise, it shows an error message.
     void deleteNoteFromFirebase(){
         DocumentReference documentReference;
         documentReference = Utility.getCollectionReferenceForNotes().document(docId);

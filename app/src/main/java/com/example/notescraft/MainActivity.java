@@ -17,6 +17,7 @@ import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
 
+    //declares variables for UI elements
     FloatingActionButton addNoteBtn;
     RecyclerView recyclerView;
     ImageButton menuBtn;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //this part refers to the UI element defined in the XML layout
         addNoteBtn = findViewById(R.id.add_note_btn);
         recyclerView = findViewById(R.id.recyler_view);
         menuBtn = findViewById(R.id.menu_btn);
@@ -36,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         setupRecyclerView();
     }
 
+
+    // This method displays a popup menu anchored to a specified view (menuBtn),
+    // adds a "Logout" option to the menu, and sets a listener to handle the click event on the menu items.
+    // If the "Logout" option is clicked, it signs the user out of Firebase, redirects to the LoginActivity,
+    // and finishes the current activity.
     void showMenu(){
         PopupMenu popupMenu  = new PopupMenu(MainActivity.this,menuBtn);
         popupMenu.getMenu().add("Logout");
@@ -55,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+//This method sets up a RecyclerView to display notes fetched from Firestore,
+// ordering them by timestamp in descending order,
+// and initializes an adapter to populate the RecyclerView with the fetched notes.
     void setupRecyclerView(){
         Query query  = Utility.getCollectionReferenceForNotes().orderBy("timestamp",Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
@@ -64,18 +75,24 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(noteAdapter);
     }
 
+
+
+    //Starts listening for changes in the Firestore database and updates the RecyclerView accordingly.
     @Override
     protected void onStart() {
         super.onStart();
         noteAdapter.startListening();
     }
 
+    //Stops listening for changes in the Firestore database when the activity is no longer visible.
     @Override
     protected void onStop() {
         super.onStop();
         noteAdapter.stopListening();
     }
 
+    //Notifies the adapter to refresh its data when the activity resumes,
+    // ensuring any changes made while the activity was paused are reflected in the RecyclerView.
     @Override
     protected void onResume() {
         super.onResume();

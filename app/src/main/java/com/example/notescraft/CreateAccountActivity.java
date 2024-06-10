@@ -21,10 +21,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
+    //declares variables for UI elements
     EditText emailEditText,passwordEditText,confirmPasswordEditText;
     Button createAccountBtn;
     ProgressBar progressBar;
     TextView loginBtnTextView;
+
 
     //@SuppressLint("MissingInflatedId")
     @Override
@@ -32,6 +34,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        //this part refers to the UI element defined in the XML layout
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
@@ -45,6 +48,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
+   // this method retrieves user input, validates it, and if valid, creates an account in Firebase.
     void createAccount(){
         String email  = emailEditText.getText().toString();
         String password  = passwordEditText.getText().toString();
@@ -56,10 +60,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         createAccountInFirebase(email,password);
-
-
     }
 
+
+    //attempts to create a new user account with the provided email and password in Firebase
     void createAccountInFirebase(String email,String password){
         changeInProgress(true);
 
@@ -87,6 +91,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
+
+    //toggles the visibility of a progress bar and a "create account" button based on the progress status.
     void changeInProgress(boolean inProgress){
         if(inProgress){
             progressBar.setVisibility(View.VISIBLE);
@@ -97,6 +103,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     }
 
+    //checks if the email is valid, the password is at least 6 characters long,
+    // and the password matches the confirm password,
+    // showing appropriate error messages and returning false if any validation fails.
     boolean validateData(String email,String password,String confirmPassword){
         //validate the data that are input by user.
 
