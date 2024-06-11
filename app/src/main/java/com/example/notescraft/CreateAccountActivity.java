@@ -48,7 +48,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
-   // this method retrieves user input, validates it, and if valid, creates an account in Firebase.
+   // this method retrieves user input, validates it,
+   // and if valid, creates an account in Firebase.
     void createAccount(){
         String email  = emailEditText.getText().toString();
         String password  = passwordEditText.getText().toString();
@@ -63,7 +64,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
 
-    //attempts to create a new user account with the provided email and password in Firebase
+    //attempts to create a new user account
+    // with the provided email and password in Firebase
     void createAccountInFirebase(String email,String password){
         changeInProgress(true);
 
@@ -92,7 +94,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
 
-    //toggles the visibility of a progress bar and a "create account" button based on the progress status.
+    //toggles the visibility of a progress bar
+    // and a "create account" button based on the progress status.
     void changeInProgress(boolean inProgress){
         if(inProgress){
             progressBar.setVisibility(View.VISIBLE);

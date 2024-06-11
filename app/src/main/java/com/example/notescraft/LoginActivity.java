@@ -101,7 +101,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    //checks if the provided email is in a valid format and if the password is at least 6 characters long,
+    //checks if the provided email is in a valid format
+    // and if the password is at least 6 characters long,
     //displaying error messages if the data is invalid, and returning false.
     //If the data is valid, it returns true.
 
