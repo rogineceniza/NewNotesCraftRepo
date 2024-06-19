@@ -77,14 +77,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //Starts listening for changes in the Firestore database and updates the RecyclerView accordingly.
+    //Starts listening for changes in the Firestore database
+    // and updates the RecyclerView accordingly.
     @Override
     protected void onStart() {
         super.onStart();
         noteAdapter.startListening();
     }
 
-    //Stops listening for changes in the Firestore database when the activity is no longer visible.
+    //Stops listening for changes in the Firestore database
+    // when the activity is no longer visible.
     @Override
     protected void onStop() {
         super.onStop();

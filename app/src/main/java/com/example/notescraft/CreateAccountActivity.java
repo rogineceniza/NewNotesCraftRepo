@@ -48,8 +48,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
-   // this method retrieves user input, validates it,
-   // and if valid, creates an account in Firebase.
+    // this method retrieves user input, validates it,
+    // and if valid, creates an account in Firebase.
     void createAccount(){
         String email  = emailEditText.getText().toString();
         String password  = passwordEditText.getText().toString();
@@ -88,9 +88,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                     }
                 }
         );
-
-
-
     }
 
 
